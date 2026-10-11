@@ -282,6 +282,19 @@ const fr: Messages = {
   'match.kd.bhakoot': 'Relation des signes lunaires : bien-être familial et finances',
   'match.kd.nadi': 'Le koota le plus lourd, traditionnellement lié à la santé',
 
+  'share.button': 'Partager cette lecture',
+  'share.copied': 'Lien copié — collez-le où vous voulez.',
+  'share.copyFailed': 'Copie automatique impossible. Copiez ce lien :',
+  'share.warning': 'Le lien contient votre nom et vos données de naissance — rien n’est stocké sur un serveur. Toute personne qui le reçoit peut les lire.',
+  'share.print': 'Enregistrer en PDF / Imprimer',
+  'share.sharedTitle': 'Une lecture partagée avec vous',
+  'share.sharedBody': 'Ce Kundli a été ouvert depuis un lien. Rien n’a été enregistré sur cet appareil.',
+  'share.invalidTitle': 'Ce lien semble cassé',
+  'share.invalidBody': 'Baba n’a pas pu lire les données de naissance de ce lien. Demandez-en un nouveau, ou faites votre propre lecture.',
+  'share.makeMine': 'Faire ma propre lecture',
+  'share.shareText': 'Dhuni Baba a lu mes étoiles (juste pour rire !)',
+  'print.generated': 'Généré par Dhuni Baba le {date} — pour le divertissement uniquement. Ne prenez pas l’astrologie au sérieux !!!',
+
   'method.title': 'Méthode et conventions',
   'method.lead':
     "L'astrologie compte de nombreuses écoles. Voici les conventions suivies par Dhuni Baba, énoncées clairement pour que vous sachiez exactement ce que vous regardez.",
@@ -298,6 +311,7 @@ const fr: Messages = {
     'Votre choix de langue est mémorisé sur cet appareil pour que le site s’ouvre dans votre langue la prochaine fois.',
   'privacy.point5':
     'Comme tout site web, l’hébergeur peut conserver brièvement des journaux techniques (comme les adresses IP) pour servir les pages et bloquer les abus.',
+  'privacy.point6': 'Les liens de partage contiennent vos données de naissance dans le lien lui-même (après le signe #), une partie que les navigateurs n’envoient jamais à un serveur. Ne les partagez qu’avec des personnes de confiance.',
   'privacy.forgetNow': 'Oublier mes données de naissance maintenant',
   'privacy.forgotten': 'C’est fait. Vos données de naissance ont été supprimées de cet onglet.',
 

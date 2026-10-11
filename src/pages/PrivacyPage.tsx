@@ -6,7 +6,7 @@ import type { MessageKey } from '../i18n/locales/en'
 import { useI18n } from '../i18n/useI18n'
 import styles from './TextPage.module.css'
 
-const POINTS: MessageKey[] = ['privacy.point1', 'privacy.point2', 'privacy.point3', 'privacy.point4', 'privacy.point5']
+const POINTS: MessageKey[] = ['privacy.point1', 'privacy.point2', 'privacy.point3', 'privacy.point4', 'privacy.point5', 'privacy.point6']
 
 export function PrivacyPage() {
   const { t } = useI18n()

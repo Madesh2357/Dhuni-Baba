@@ -8,6 +8,12 @@ import './styles/fonts.css'
 import './styles/tokens.css'
 import './styles/global.css'
 import './styles/forms.css'
+import './styles/print.css'
+
+// Expand collapsed sections when printing / saving as PDF, so nothing is hidden.
+window.addEventListener('beforeprint', () => {
+  document.querySelectorAll('details').forEach((d) => d.setAttribute('open', ''))
+})
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

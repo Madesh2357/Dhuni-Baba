@@ -57,5 +57,7 @@ Browser
 - **Stage 3 (done)** — chart-grounded funny readings (Lagna, Venus, 7th house), Mangal Dosha,
   marriage-timing windows from the dashas, and a Guna Milan page (`/match`). The logic in
   `src/interpretation/` returns *which* reading applies and *why*; the UI only translates it.
-- **Stage 4** — shareable report (encoded in the URL fragment so no server stores it),
-  optional PDF export via the browser's print-to-PDF, end-to-end tests, deployment.
+- **Stage 4 (done)** — share links with details in the URL fragment (`src/data/shareLink.ts`,
+  validated like form input on the way back in), `/share` page, print stylesheet for Save as PDF
+  (`src/styles/print.css`), Playwright end-to-end + axe accessibility tests (`e2e/`), CI for both,
+  deployment guide.
