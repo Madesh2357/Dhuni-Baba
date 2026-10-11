@@ -38,7 +38,7 @@ describe('BirthDetailsPage', () => {
     expect(screen.getByText(/ascendant \(Lagna\) and houses cannot be determined/)).toBeInTheDocument()
   })
 
-  it('accepts manual coordinates and shows the details with a demonstration label', async () => {
+  it('accepts manual coordinates and shows a calculated Kundli', async () => {
     renderForm()
     const user = userEvent.setup()
     await user.type(screen.getByLabelText('Your name'), 'Zero')
@@ -50,8 +50,11 @@ describe('BirthDetailsPage', () => {
     await user.type(screen.getByLabelText('Time zone'), 'Asia/Kolkata')
     await user.click(screen.getByRole('button', { name: 'Reveal my chart' }))
 
-    expect(await screen.findByRole('heading', { name: 'Namaste, Zero.' })).toBeInTheDocument()
-    expect(screen.getByRole('img', { name: /Demonstration only/ })).toBeInTheDocument()
+    // The dashboard is lazy-loaded, so wait for it.
+    expect(await screen.findByRole('heading', { name: 'Namaste, Zero.' }, { timeout: 5000 })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /Birth chart/ })).toBeInTheDocument()
+    expect(screen.getByRole('table')).toHaveTextContent('Sun (Surya)')
     expect(screen.getByText(/\+05:30/)).toBeInTheDocument() // 06:45 IST → 01:15 UTC
+    expect(screen.queryByText(/Demonstration/)).not.toBeInTheDocument()
   })
 })

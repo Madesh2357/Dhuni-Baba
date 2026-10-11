@@ -15,13 +15,15 @@ Marathi, Punjabi and French.
 | Stage | What | State |
 | --- | --- | --- |
 | 1 | Design system, landing page, birth-details form, navigation, 11 languages | ✅ Done |
-| 2 | Real planetary calculations + Kundli dashboard | Next |
-| 3 | Chart-grounded readings (personality, love, Guna Milan, Mangal Dosha) | Planned |
+| 2 | Real planetary calculations + Kundli dashboard | ✅ Done |
+| 3 | Chart-grounded readings (personality, love, Guna Milan, Mangal Dosha) | Next |
 | 4 | Shareable report, PDF, more tests, deployment | Planned |
 
-Until Stage 2 lands, the Kundli page shows your validated details and UTC
-birth time, plus a chart frame clearly labelled **"Demonstration only"**.
-No planet positions are ever invented.
+The Kundli dashboard shows the Lagna, Moon sign, nakshatra, a North or South
+Indian chart, a table of all nine grahas (with retrograde flags and houses)
+and the Vimshottari dasha timeline. Positions come from **Astronomy Engine**
+(MIT) and are tested against textbook values; nothing is invented. Unknown or
+approximate birth times are handled openly — see the Method page.
 
 ## Run it on your computer
 
@@ -54,7 +56,7 @@ src/
   styles/tokens.css     ALL colours, fonts and spacing — change the look here
   i18n/locales/*.ts     the text in every language (en.ts is the master list)
   data/                 validation, time-zone conversion, place search, session storage
-  astrology/            documented conventions (calculations arrive in Stage 2)
+  astrology/            calculations: engine.ts, ayanamsha.ts, chart.ts, dasha.ts (+ tests)
   interpretation/       Baba's readings (Stage 3)
 docs/                   architecture, licences, deployment
 ```
@@ -87,6 +89,14 @@ tells you which file.
   app works without the network.
 
 ## Astrology conventions
+
+How a chart is calculated (`src/astrology/chart.ts`):
+
+1. Local birth time → UTC (`src/data/timezone.ts`).
+2. Astronomy Engine gives each body's apparent tropical longitude.
+3. Subtract the Lahiri ayanamsha (`ayanamsha.ts`) → sidereal longitude.
+4. Split into sign, nakshatra and pada (`zodiac.ts`); houses are whole signs from the Lagna.
+5. The Moon's nakshatra starts the Vimshottari dasha (`dasha.ts`).
 
 Sidereal zodiac, Lahiri ayanamsha, whole-sign houses, mean node, North Indian
 chart, IANA time zones. The full, plain-language list (with what is active vs.

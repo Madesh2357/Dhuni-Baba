@@ -8,7 +8,7 @@ Browser
  ├─ UI           src/pages, src/components     React components + CSS Modules
  ├─ i18n         src/i18n                      11 languages, lazy-loaded
  ├─ Data         src/data                      validation, time zones, geocoding, session store
- ├─ Astrology    src/astrology                 conventions now, calculations in Stage 2
+ ├─ Astrology    src/astrology                 Astronomy Engine + Lahiri + dashas (lazy-loaded)
  └─ Readings     src/interpretation            Stage 3
         │
         └── HTTPS ──► Open-Meteo Geocoding API (place name only, no key)
@@ -43,16 +43,17 @@ Browser
 2. `validateBirthForm()` (src/data/validation.ts) returns either errors or
    clean `BirthDetails`.
 3. `BirthDetailsProvider` keeps them in memory + `sessionStorage`.
-4. `KundliPage` reads them, converts local time → UTC with
-   `localToUtc()` (src/data/timezone.ts) and, from Stage 2, will pass the
-   UTC instant + coordinates to the astrology layer.
+4. `KundliPage` lazy-loads `KundliDashboard`, which calls `computeChart()`
+   (src/astrology/chart.ts): local time → UTC → tropical positions → minus
+   Lahiri ayanamsha → signs, nakshatras, houses and dashas.
 
 ## Planned stages
 
 - **Stage 1 (done)** — design system, landing page, form, navigation, 11 languages, privacy & method pages.
-- **Stage 2** — `astronomy-engine` (MIT) for Sun/Moon/planet longitudes; Lahiri ayanamsha;
-  mean node; ascendant; whole-sign houses; nakshatras; Vimshottari dasha; North Indian chart.
-  Each formula tested against published reference values.
+- **Stage 2 (done)** — `astronomy-engine` (MIT) for Sun/Moon/planet longitudes; Lahiri ayanamsha;
+  mean node; ascendant; whole-sign houses; nakshatras; Vimshottari dasha; North and South Indian charts.
+  Tested against Meeus' worked examples, the Indian Astronomical Ephemeris ayanamsha and Makar Sankranti 2024.
+  The dashboard is a lazy-loaded chunk (`src/pages/kundli/`), with loading and error states.
 - **Stage 3** — chart-grounded funny readings: personality, Venus & 7th house,
   Guna Milan (partner form), Mangal Dosha, marriage timing.
 - **Stage 4** — shareable report (encoded in the URL fragment so no server stores it),
