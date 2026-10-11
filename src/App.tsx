@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { BirthDetailsPage } from './pages/BirthDetailsPage'
@@ -7,6 +8,9 @@ import { MethodPage } from './pages/MethodPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 
+// Loaded on demand: it carries the astronomy engine.
+const MatchPage = lazy(() => import('./pages/MatchPage'))
+
 /** Every page of the site. Add a <Route> here to add a page. */
 export function App() {
   return (
@@ -15,6 +19,14 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="begin" element={<BirthDetailsPage />} />
         <Route path="kundli" element={<KundliPage />} />
+        <Route
+          path="match"
+          element={
+            <Suspense fallback={<div className="container" style={{ minHeight: '60vh' }} />}>
+              <MatchPage />
+            </Suspense>
+          }
+        />
         <Route path="method" element={<MethodPage />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="*" element={<NotFoundPage />} />

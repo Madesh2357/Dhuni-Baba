@@ -16,8 +16,8 @@ Marathi, Punjabi and French.
 | --- | --- | --- |
 | 1 | Design system, landing page, birth-details form, navigation, 11 languages | ✅ Done |
 | 2 | Real planetary calculations + Kundli dashboard | ✅ Done |
-| 3 | Chart-grounded readings (personality, love, Guna Milan, Mangal Dosha) | Next |
-| 4 | Shareable report, PDF, more tests, deployment | Planned |
+| 3 | Chart-grounded readings, Guna Milan compatibility, Mangal Dosha, marriage timing | ✅ Done |
+| 4 | Shareable report, PDF, more tests, deployment | Next |
 
 The Kundli dashboard shows the Lagna, Moon sign, nakshatra, a North or South
 Indian chart, a table of all nine grahas (with retrograde flags and houses)
@@ -33,6 +33,24 @@ You need **Node.js 20.19 or newer** (check with `node -v`; download from nodejs.
 npm install      # once: downloads the libraries into node_modules/
 npm run dev      # starts the site at http://localhost:5173 and reloads as you edit
 ```
+
+### Open it on your phone
+
+Your phone and PC must be on the same Wi-Fi.
+
+```bash
+npm run dev:mobile   # prints a "Network:" address such as http://192.168.1.23:5173
+```
+
+Type that **Network** address into your phone's browser. (If it doesn't load,
+your PC's firewall may be blocking port 5173 — on Ubuntu: `sudo ufw allow 5173`.)
+
+### If the Kundli page doesn't work
+
+1. Stop the server (Ctrl + C), then run `git pull` and **`npm install`** —
+   new stages add libraries, and a missing library stops the page from loading.
+2. Start again with `npm run dev` and do a hard refresh (Ctrl + Shift + R).
+3. Still stuck? Open DevTools (F12) → **Console**, and send the red error text.
 
 Other commands:
 
@@ -57,7 +75,7 @@ src/
   i18n/locales/*.ts     the text in every language (en.ts is the master list)
   data/                 validation, time-zone conversion, place search, session storage
   astrology/            calculations: engine.ts, ayanamsha.ts, chart.ts, dasha.ts (+ tests)
-  interpretation/       Baba's readings (Stage 3)
+  interpretation/       readings, Guna Milan and Mangal Dosha (pure functions + tests)
 docs/                   architecture, licences, deployment
 ```
 

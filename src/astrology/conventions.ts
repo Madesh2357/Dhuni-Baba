@@ -99,14 +99,28 @@ export const CONVENTIONS: Convention[] = [
   {
     topic: 'Compatibility',
     choice: 'Ashtakoota Guna Milan (36 points)',
-    detail: 'Based on both partners’ Moon nakshatra and sign, following the common North Indian scoring tables.',
-    status: 'stage3',
+    detail:
+      'Based on both people’s Moon nakshatra and sign. Varna, Tara, Graha Maitri (natural friendships of Brihat Parashara Hora Shastra), Bhakoot and Nadi use the standard rules; Vashya uses the five-group table with Dhanu and Makara split at 15°; Gana uses the common North Indian table. Yoni is deliberately simplified (same animal 4, sworn enemies 0, others 2) because full 14 × 14 tables differ between almanacs. Varna and Gana depend on who takes the groom’s role, so the user chooses. South Indian 10-porutham matching is a different system and is not implemented.',
+    status: 'active',
+  },
+  {
+    topic: 'Readings',
+    choice: 'Lagna sign, Venus sign, 7th-house sign and lord',
+    detail:
+      'Personality comes from the Lagna (or the Moon sign without a birth time); love style from Venus’ sign; the partner reading from the sign on the 7th house. Every reading shows the factor it is based on. The texts are traditional themes retold for humour — not predictions.',
+    status: 'active',
+  },
+  {
+    topic: 'Marriage timing',
+    choice: 'Antardashas of Venus, the 7th lord and planets in the 7th',
+    detail: 'Up to three upcoming sub-periods within the next 25 years, starting from age 18. A popular traditional rule of thumb, presented as a joke-with-footnotes.',
+    status: 'active',
   },
   {
     topic: 'Mangal Dosha',
     choice: 'Mars in houses 1, 2, 4, 7, 8 or 12 from the Lagna',
     detail:
-      'Some traditions also count from the Moon and Venus and apply various cancellations; the reading will say which rule produced the result.',
-    status: 'stage3',
+      'Shown from the Lagna, and also from the Moon (another common tradition). The one cancellation mentioned is Mars in its own or exalted sign (Mesha, Vrishchika, Makara); many other cancellation rules exist and are not applied.',
+    status: 'active',
   },
 ]

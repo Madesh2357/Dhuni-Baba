@@ -116,6 +116,10 @@ img, svg { display: block; max-width: 100%; }
 .btn-ghost:hover { background: var(--color-gold-faint); color: var(--color-ivory); border-color: var(--color-gold); }
 
 .btn-text {
+  /* Looks like a link, but keeps a 44px-tall touch area for phones. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   background: none; border: 0; padding: 0;
   color: var(--color-gold);
   font: inherit; font-size: var(--text-sm);

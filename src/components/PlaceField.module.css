@@ -1,0 +1,8 @@
+.wrap { display: flex; flex-direction: column; gap: var(--space-5); }
+.manual { display: flex; flex-direction: column; gap: var(--space-5); }
+.row { display: grid; gap: var(--space-5); }
+.switch { align-self: flex-start; text-align: left; }
+
+@media (min-width: 36em) {
+  .row { grid-template-columns: 1fr 1fr; align-items: start; }
+}

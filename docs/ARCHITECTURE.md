@@ -9,7 +9,7 @@ Browser
  ├─ i18n         src/i18n                      11 languages, lazy-loaded
  ├─ Data         src/data                      validation, time zones, geocoding, session store
  ├─ Astrology    src/astrology                 Astronomy Engine + Lahiri + dashas (lazy-loaded)
- └─ Readings     src/interpretation            Stage 3
+ └─ Readings     src/interpretation            readings, Guna Milan, Mangal Dosha
         │
         └── HTTPS ──► Open-Meteo Geocoding API (place name only, no key)
 ```
@@ -54,7 +54,8 @@ Browser
   mean node; ascendant; whole-sign houses; nakshatras; Vimshottari dasha; North and South Indian charts.
   Tested against Meeus' worked examples, the Indian Astronomical Ephemeris ayanamsha and Makar Sankranti 2024.
   The dashboard is a lazy-loaded chunk (`src/pages/kundli/`), with loading and error states.
-- **Stage 3** — chart-grounded funny readings: personality, Venus & 7th house,
-  Guna Milan (partner form), Mangal Dosha, marriage timing.
+- **Stage 3 (done)** — chart-grounded funny readings (Lagna, Venus, 7th house), Mangal Dosha,
+  marriage-timing windows from the dashas, and a Guna Milan page (`/match`). The logic in
+  `src/interpretation/` returns *which* reading applies and *why*; the UI only translates it.
 - **Stage 4** — shareable report (encoded in the URL fragment so no server stores it),
   optional PDF export via the browser's print-to-PDF, end-to-end tests, deployment.

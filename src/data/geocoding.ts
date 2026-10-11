@@ -27,7 +27,18 @@ export class GeocodingError extends Error {}
 export async function searchPlaces(query: string, language: string, signal?: AbortSignal): Promise<Place[]> {
   const trimmed = query.trim()
   if (trimmed.length < 2) return []
+  try {
+    return await requestPlaces(trimmed, language, signal)
+  } catch (error) {
+    // If the service rejects a language code, try once more in English.
+    if (language !== 'en' && error instanceof GeocodingError && !signal?.aborted) {
+      return requestPlaces(trimmed, 'en', signal)
+    }
+    throw error
+  }
+}
 
+async function requestPlaces(trimmed: string, language: string, signal?: AbortSignal): Promise<Place[]> {
   const url = new URL(ENDPOINT)
   url.searchParams.set('name', trimmed)
   url.searchParams.set('count', '8')

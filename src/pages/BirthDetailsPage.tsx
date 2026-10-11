@@ -2,7 +2,7 @@ import { useRef, useState, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FormField } from '../components/FormField'
 import { Notice } from '../components/Notice'
-import { PlaceSearch } from '../components/PlaceSearch'
+import { PlaceField } from '../components/PlaceField'
 import { usePageTitle } from '../components/usePageTitle'
 import { listTimeZones } from '../data/timezone'
 import type { BirthDetails, BirthField, BirthFormInput, TimeAccuracy } from '../data/types'
@@ -229,67 +229,13 @@ export function BirthDetailsPage() {
 
         <fieldset className={styles.group}>
           <legend className="visually-hidden">{t('form.placeLabel')}</legend>
-          {!form.manualEntry ? (
-            <FormField id={FIELD_IDS.place} label={t('form.placeLabel')} hint={t('form.placeHint')} error={err('place')}>
-              {(control) => (
-                <PlaceSearch control={control} value={form.place} onChange={(place) => update({ place })} />
-              )}
-            </FormField>
-          ) : (
-            <div className={styles.manual}>
-              <div className={styles.row}>
-                <FormField id={FIELD_IDS.latitude} label={t('form.latLabel')} hint={t('form.latHint')} error={err('latitude')}>
-                  {(control) => (
-                    <input
-                      {...control}
-                      className="input"
-                      inputMode="decimal"
-                      value={form.latitude}
-                      onChange={(e) => update({ latitude: e.target.value })}
-                    />
-                  )}
-                </FormField>
-                <FormField id={FIELD_IDS.longitude} label={t('form.lonLabel')} hint={t('form.lonHint')} error={err('longitude')}>
-                  {(control) => (
-                    <input
-                      {...control}
-                      className="input"
-                      inputMode="decimal"
-                      value={form.longitude}
-                      onChange={(e) => update({ longitude: e.target.value })}
-                    />
-                  )}
-                </FormField>
-              </div>
-              <FormField id={FIELD_IDS.timeZone} label={t('form.tzLabel')} hint={t('form.tzHint')} error={err('timeZone')}>
-                {(control) => (
-                  <>
-                    <input
-                      {...control}
-                      className="input"
-                      list="tz-options"
-                      autoComplete="off"
-                      spellCheck={false}
-                      value={form.timeZone}
-                      onChange={(e) => update({ timeZone: e.target.value })}
-                    />
-                    <datalist id="tz-options">
-                      {timeZones.map((zone) => (
-                        <option key={zone} value={zone} />
-                      ))}
-                    </datalist>
-                  </>
-                )}
-              </FormField>
-            </div>
-          )}
-          <button
-            type="button"
-            className={`btn-text ${styles.switch}`}
-            onClick={() => update({ manualEntry: !form.manualEntry })}
-          >
-            {form.manualEntry ? t('form.manualHide') : t('form.manualToggle')}
-          </button>
+          <PlaceField
+            form={form}
+            update={update}
+            errors={{ place: err('place'), latitude: err('latitude'), longitude: err('longitude'), timeZone: err('timeZone') }}
+            ids={FIELD_IDS}
+            timeZones={timeZones}
+          />
         </fieldset>
 
         <p className={styles.privacy}>{t('form.privacy')}</p>

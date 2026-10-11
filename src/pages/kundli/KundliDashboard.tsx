@@ -12,6 +12,7 @@ import type { MessageKey } from '../../i18n/locales/en'
 import { useAstroNames } from '../../i18n/useAstroNames'
 import { useI18n } from '../../i18n/useI18n'
 import styles from './KundliDashboard.module.css'
+import { ReadingsSection } from './ReadingsSection'
 import { useChartStyle } from './useChartStyle'
 
 const ACCURACY_LABEL: Record<TimeAccuracy, MessageKey> = {
@@ -130,6 +131,9 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
         {conversion?.status === 'ambiguous' && <Notice tone="caution"><p>{t('kundli.ambiguous')}</p></Notice>}
       </div>
 
+      {/* —— Baba's readings: the fun part, so it comes first —— */}
+      <ReadingsSection chart={chart} names={names} now={now} />
+
       {/* —— Chart and positions —— */}
       <section className={styles.chartGrid} aria-labelledby="chart-title">
         <div className={styles.chartColumn}>
@@ -177,10 +181,10 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
                 {chart.ascendant && (
                   <tr className={styles.lagnaRow}>
                     <th scope="row">{t('kundli.lagna')}</th>
-                    <td>{names.signs[chart.ascendant.sign]}</td>
-                    <td className={styles.num}>{formatDegrees(chart.ascendant.degreeInSign)}</td>
-                    <td>{names.nakshatras[chart.ascendant.nakshatra]} {chart.ascendant.pada}</td>
-                    <td className={styles.num}>1</td>
+                    <td data-label={t('kundli.colSign')}>{names.signs[chart.ascendant.sign]}</td>
+                    <td data-label={t('kundli.colDegree')} className={styles.num}>{formatDegrees(chart.ascendant.degreeInSign)}</td>
+                    <td data-label={t('kundli.colNakshatra')}>{names.nakshatras[chart.ascendant.nakshatra]} {chart.ascendant.pada}</td>
+                    <td data-label={t('kundli.colHouse')} className={styles.num}>1</td>
                   </tr>
                 )}
                 {chart.grahas.map((g) => (
@@ -194,10 +198,10 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
                         </span>
                       )}
                     </th>
-                    <td>{names.signs[g.sign]}</td>
-                    <td className={styles.num}>{formatDegrees(g.degreeInSign)}</td>
-                    <td>{names.nakshatras[g.nakshatra]} {g.pada}</td>
-                    {chart.ascendant && <td className={styles.num}>{g.house}</td>}
+                    <td data-label={t('kundli.colSign')}>{names.signs[g.sign]}</td>
+                    <td data-label={t('kundli.colDegree')} className={styles.num}>{formatDegrees(g.degreeInSign)}</td>
+                    <td data-label={t('kundli.colNakshatra')}>{names.nakshatras[g.nakshatra]} {g.pada}</td>
+                    {chart.ascendant && <td data-label={t('kundli.colHouse')} className={styles.num}>{g.house}</td>}
                   </tr>
                 ))}
               </tbody>
@@ -265,7 +269,6 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
       </details>
 
       <div className={styles.footerBlock}>
-        <p className={styles.teaser}>{t('kundli.teaser')}</p>
         <div className={styles.actions}>
           <Link to="/begin" className="btn btn-ghost">{t('kundli.edit')}</Link>
           <button type="button" className="btn-text" onClick={() => { forget(); navigate('/begin') }}>

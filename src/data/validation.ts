@@ -12,7 +12,8 @@ export const MIN_DATE = '1800-01-01'
 export const NAME_MAX_LENGTH = 60
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
-const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/
+// Some mobile browsers report seconds ("06:45:00"); we accept and drop them.
+const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d(\.\d+)?)?$/
 
 /** True if "YYYY-MM-DD" is a real calendar day (rejects 2023-02-30). */
 export function isRealDate(value: string): boolean {
@@ -48,10 +49,11 @@ export function validateBirthForm(input: BirthFormInput, now: Date = new Date())
   else if (date < MIN_DATE) errors.date = 'error.dateTooOld'
 
   const timeKnown = input.timeAccuracy !== 'unknown'
-  const time = input.time.trim()
+  const rawTime = input.time.trim()
+  const time = rawTime.slice(0, 5) // "HH:MM"
   if (timeKnown) {
-    if (!time) errors.time = 'error.required'
-    else if (!TIME_PATTERN.test(time)) errors.time = 'error.timeInvalid'
+    if (!rawTime) errors.time = 'error.required'
+    else if (!TIME_PATTERN.test(rawTime)) errors.time = 'error.timeInvalid'
   }
 
   let place = input.place

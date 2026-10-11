@@ -9,6 +9,7 @@ import styles from './Header.module.css'
 const LINKS: { to: string; label: MessageKey }[] = [
   { to: '/begin', label: 'nav.begin' },
   { to: '/kundli', label: 'nav.kundli' },
+  { to: '/match', label: 'nav.match' },
   { to: '/method', label: 'nav.method' },
   { to: '/privacy', label: 'nav.privacy' },
 ]

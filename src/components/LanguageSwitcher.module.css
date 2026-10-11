@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
   appearance: none;
   color: var(--color-ivory);
-  font: var(--text-sm) var(--font-body);
+  font: 1rem var(--font-body); /* 16px: stops iPhones zooming in on focus */
   cursor: pointer;
 }
 .select[aria-busy='true'] { opacity: 0.7; }

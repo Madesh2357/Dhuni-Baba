@@ -66,6 +66,11 @@ describe('validateBirthForm', () => {
     expect(!result.ok && result.errors.date).toBe('error.dateFuture')
   })
 
+  it('accepts times with seconds, as some phone browsers send them', () => {
+    const result = validateBirthForm({ ...VALID, time: '06:45:00' }, NOW)
+    expect(result.ok && result.value.time).toBe('06:45')
+  })
+
   it('rejects names that are too long', () => {
     const result = validateBirthForm({ ...VALID, name: 'x'.repeat(61) }, NOW)
     expect(!result.ok && result.errors.name).toBe('error.nameTooLong')
