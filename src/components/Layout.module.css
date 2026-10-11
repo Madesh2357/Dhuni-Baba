@@ -1,0 +1,22 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  outline: none;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-gold);
+  color: var(--color-midnight);
+  border-radius: var(--radius);
+}
+.skip:focus { top: var(--space-2); }

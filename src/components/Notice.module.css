@@ -1,0 +1,17 @@
+.notice {
+  padding: var(--space-4) var(--space-5);
+  border-left: 2px solid var(--color-gold);
+  background: var(--color-gold-faint);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--text-sm);
+}
+.notice[data-tone='caution'] { border-left-color: var(--color-error); background: rgba(240, 160, 138, 0.08); }
+
+.title {
+  margin: 0 0 var(--space-1);
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.body > :last-child { margin-bottom: 0; }
+.body { color: var(--color-ivory); }

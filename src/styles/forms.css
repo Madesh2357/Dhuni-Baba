@@ -1,0 +1,19 @@
+/* Shared look for text inputs, date/time pickers and selects. */
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(244, 238, 223, 0.22);
+  border-radius: var(--radius);
+  background: var(--color-midnight);
+  color: var(--color-ivory);
+  font: var(--text-md) var(--font-body);
+  transition: border-color 160ms var(--ease);
+}
+.input::placeholder { color: rgba(180, 173, 156, 0.75); }
+.input:hover { border-color: var(--color-gold-soft); }
+.input:focus { border-color: var(--color-gold); outline: none; box-shadow: 0 0 0 1px var(--color-gold); }
+.input[aria-invalid='true'] { border-color: var(--color-error); }
+
+/* Make the browser's calendar/clock icons visible on a dark background. */
+.input::-webkit-calendar-picker-indicator { filter: invert(0.85) sepia(0.4); cursor: pointer; }

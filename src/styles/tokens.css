@@ -1,0 +1,54 @@
+/*
+ * Design tokens — the single source of truth for colour, type and spacing.
+ * Change a value here and the whole site follows.
+ */
+:root {
+  /* Celestial Luxury palette */
+  --color-midnight: #101426;   /* page background */
+  --color-indigo: #252b4a;     /* raised surfaces */
+  --color-indigo-deep: #1a1f38;/* between midnight and indigo */
+  --color-gold: #d6b36a;       /* accents, rules, focus */
+  --color-gold-soft: rgba(214, 179, 106, 0.35);
+  --color-gold-faint: rgba(214, 179, 106, 0.14);
+  --color-ivory: #f4eedf;      /* primary text */
+  --color-muted: #b4ad9c;      /* secondary text: 8.7:1 on midnight, 6.9:1 on indigo */
+  --color-error: #f0a08a;      /* 8.2:1 on midnight */
+  --color-success: #a9d3a0;
+
+  /* Indic fallbacks follow the Latin face; the browser picks per glyph. */
+  --font-indic: 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Telugu',
+    'Noto Sans Malayalam', 'Noto Sans Kannada', 'Noto Sans Oriya',
+    'Noto Sans Bengali', 'Noto Sans Gurmukhi';
+  --font-body: 'DM Sans', var(--font-indic), system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', var(--font-indic), Georgia, serif;
+
+  /* Fluid type scale (mobile first, grows with the viewport) */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-xl: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  --text-2xl: clamp(2.5rem, 1.8rem + 3vw, 4.5rem);
+
+  /* Spacing — generous on purpose */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: clamp(4.5rem, 3rem + 6vw, 8rem);
+
+  --gutter: 1rem;              /* 16px side gutter on phones */
+  --content-width: 72rem;
+  --reading-width: 38rem;
+  --radius: 4px;
+  --rule: 1px solid var(--color-gold-soft);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 48em) {
+  :root { --gutter: 2rem; }
+}

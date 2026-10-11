@@ -1,0 +1,105 @@
+.header {
+  position: relative;
+  z-index: 10;
+  border-bottom: var(--rule);
+  background: rgba(16, 20, 38, 0.92);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-ivory);
+  text-decoration: none;
+}
+.brand:hover { color: var(--color-ivory); }
+
+.mark { width: 36px; height: 36px; flex-shrink: 0; }
+
+.name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+.toggle {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-ivory);
+  font: 500 var(--text-sm) var(--font-body);
+  cursor: pointer;
+}
+
+.panel {
+  display: none;
+  flex-basis: 100%;
+  padding-block: var(--space-4) var(--space-2);
+  border-top: var(--rule);
+}
+.panel[data-open='true'] { display: block; }
+
+.links {
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+}
+
+.link {
+  display: block;
+  padding: var(--space-3) 0;
+  color: var(--color-ivory);
+  text-decoration: none;
+  font-size: var(--text-md);
+}
+.link:hover { color: var(--color-gold); }
+
+.active { color: var(--color-gold); }
+
+@media (min-width: 40em) {
+  .tagline { display: block; }
+}
+
+@media (min-width: 64em) {
+  .toggle { display: none; }
+
+  .panel,
+  .panel[data-open='true'] {
+    display: flex;
+    flex-basis: auto;
+    align-items: center;
+    gap: var(--space-6);
+    padding: 0;
+    border: 0;
+  }
+
+  .links { display: flex; gap: var(--space-5); margin: 0; }
+
+  .link {
+    padding: var(--space-2) 0;
+    font-size: var(--text-sm);
+    border-bottom: 1px solid transparent;
+  }
+  .active { border-bottom-color: var(--color-gold); }
+}

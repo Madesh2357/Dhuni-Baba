@@ -1,0 +1,32 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.select {
+  min-height: 44px;
+  padding: 0 2.25rem 0 var(--space-3);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background-color: var(--color-indigo-deep);
+  /* Small gold chevron drawn with CSS gradients — no icon font needed. */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--color-gold) 50%),
+    linear-gradient(135deg, var(--color-gold) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  appearance: none;
+  color: var(--color-ivory);
+  font: var(--text-sm) var(--font-body);
+  cursor: pointer;
+}
+.select[aria-busy='true'] { opacity: 0.7; }

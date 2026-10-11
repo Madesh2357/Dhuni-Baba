@@ -1,0 +1,31 @@
+/*
+ * Self-hosted fonts (via Fontsource, all SIL Open Font License 1.1).
+ * Self-hosting means no request is made to Google's servers.
+ * Each file declares a `unicode-range`, so the browser only downloads a
+ * script's font when text in that script is actually on screen.
+ */
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/500.css';
+@import '@fontsource/dm-sans/600.css';
+@import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/500.css';
+@import '@fontsource/cormorant-garamond/600.css';
+@import '@fontsource/cormorant-garamond/400-italic.css';
+
+/* Indian scripts — DM Sans and Cormorant have no glyphs for these. */
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/600.css';
+@import '@fontsource/noto-sans-tamil/400.css';
+@import '@fontsource/noto-sans-tamil/600.css';
+@import '@fontsource/noto-sans-telugu/400.css';
+@import '@fontsource/noto-sans-telugu/600.css';
+@import '@fontsource/noto-sans-malayalam/400.css';
+@import '@fontsource/noto-sans-malayalam/600.css';
+@import '@fontsource/noto-sans-kannada/400.css';
+@import '@fontsource/noto-sans-kannada/600.css';
+@import '@fontsource/noto-sans-oriya/400.css';
+@import '@fontsource/noto-sans-oriya/600.css';
+@import '@fontsource/noto-sans-bengali/400.css';
+@import '@fontsource/noto-sans-bengali/600.css';
+@import '@fontsource/noto-sans-gurmukhi/400.css';
+@import '@fontsource/noto-sans-gurmukhi/600.css';
