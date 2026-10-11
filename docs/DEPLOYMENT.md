@@ -5,10 +5,42 @@ Dhuni Baba is a **static website**: `npm run build` produces plain files in
 browser. No server, database or API key is needed, which makes hosting free
 and simple.
 
-## Option 1 — Cloudflare Pages (recommended)
+## Option 1 — Cloudflare Workers (what dhuni-baba is deployed on)
 
-Free, fast in India, unlimited bandwidth, automatic HTTPS, and a preview URL
-for every pull request.
+Cloudflare's dashboard now creates new Git-connected sites as **Workers with
+static assets** (addresses ending in `.workers.dev`). The repo includes
+`wrangler.jsonc`, which tells Cloudflare to:
+
+- serve the built files from `dist/`, and
+- answer unknown paths (`/kundli`, `/match`, `/share#…`) with `index.html`
+  (`"not_found_handling": "single-page-application"`), so refreshing or
+  opening those links directly works instead of showing a 404.
+
+`public/_headers` is applied too (security headers and long caching for
+`/assets/*`).
+
+In the dashboard: **Workers & Pages → dhuni-baba → Settings → Build** and check:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Root directory | `/` |
+| Production branch | `main` |
+
+Every push to `main` then rebuilds and redeploys automatically.
+
+Test a deployed site with the browser tests:
+
+```bash
+E2E_BASE_URL=https://dhuni-baba.<your-subdomain>.workers.dev npm run test:e2e
+```
+
+To try Cloudflare's runtime locally: `npm run build && npx wrangler dev`.
+
+## Option 1b — Cloudflare Pages
+
+The older Pages product works too (addresses ending in `.pages.dev`).
 
 1. Sign up at <https://dash.cloudflare.com> (free plan is enough).
 2. **Workers & Pages → Create → Pages → Connect to Git** and authorise GitHub.

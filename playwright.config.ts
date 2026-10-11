@@ -6,21 +6,27 @@ import { defineConfig, devices } from '@playwright/test'
  *
  *   npx playwright install chromium   # once, downloads the test browser
  *   npm run test:e2e
+ *
+ * To test a deployed site instead of a local build:
+ *   E2E_BASE_URL=https://dhuni-baba.example.workers.dev npm run test:e2e
  */
+const external = process.env.E2E_BASE_URL
 export default defineConfig({
   testDir: './e2e',
   timeout: 30_000,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? 'github' : 'list',
-  use: { baseURL: 'http://localhost:4175', trace: 'retain-on-failure' },
+  use: { baseURL: external ?? 'http://localhost:4175', trace: 'retain-on-failure' },
   projects: [
     { name: 'phone', use: { ...devices['Pixel 7'] } },
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
   ],
-  webServer: {
-    command: 'npm run build && npx vite preview --port 4175 --strictPort',
-    url: 'http://localhost:4175',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  webServer: external
+    ? undefined
+    : {
+        command: 'npm run build && npx vite preview --port 4175 --strictPort',
+        url: 'http://localhost:4175',
+        reuseExistingServer: !process.env.CI,
+        timeout: 120_000,
+      },
 })

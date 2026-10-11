@@ -140,8 +140,9 @@ geocoding. See the **Privacy** page.
 
 ## Deployment
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — Cloudflare Pages
-(recommended), Vercel, or fully self-hosted with Caddy.
+Live on Cloudflare Workers; every push to `main` redeploys. See
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Cloudflare Workers/Pages, Vercel, or
+fully self-hosted with Caddy.
 
 ## Credits & licences
 
