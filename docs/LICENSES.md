@@ -16,7 +16,10 @@ Checked on 2026-10-11 from each package's `package.json` in `node_modules`.
 ## Development only (not shipped)
 
 vite (MIT), @vitejs/plugin-react (MIT), typescript (Apache-2.0),
-vitest (MIT), jsdom (MIT), @testing-library/* (MIT), oxlint (MIT).
+vitest (MIT), jsdom (MIT), @testing-library/* (MIT), oxlint (MIT),
+@playwright/test (Apache-2.0), @axe-core/playwright and axe-core (MPL-2.0 —
+file-level copyleft that only matters if you modify and distribute axe itself;
+it is a test tool and never shipped to visitors).
 
 ## External data / services
 

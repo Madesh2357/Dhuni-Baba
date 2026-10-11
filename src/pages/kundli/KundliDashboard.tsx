@@ -13,6 +13,7 @@ import { useAstroNames } from '../../i18n/useAstroNames'
 import { useI18n } from '../../i18n/useI18n'
 import styles from './KundliDashboard.module.css'
 import { ReadingsSection } from './ReadingsSection'
+import { ShareBar } from './ShareBar'
 import { useChartStyle } from './useChartStyle'
 
 const ACCURACY_LABEL: Record<TimeAccuracy, MessageKey> = {
@@ -27,7 +28,13 @@ function formatDegrees(value: number) {
 }
 
 /** The full Kundli for one person. Loaded on demand (it carries the astronomy engine). */
-export default function KundliDashboard({ details }: { details: BirthDetails }) {
+interface Props {
+  details: BirthDetails
+  /** 'shared' = opened from someone's link: nothing is saved, no edit/forget actions. */
+  mode?: 'own' | 'shared'
+}
+
+export default function KundliDashboard({ details, mode = 'own' }: Props) {
   const { t, locale, language } = useI18n()
   const names = useAstroNames()
   const { forget } = useBirthDetails()
@@ -100,7 +107,14 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
         <p className="eyebrow">{t('kundli.title')}</p>
         <h1>{t('kundli.greeting', { name: details.name })}</h1>
         <p className="muted">{t('kundli.subtitle')}</p>
+        {mode === 'shared' && (
+          <Notice title={t('share.sharedTitle')}>
+            <p>{t('share.sharedBody')}</p>
+          </Notice>
+        )}
       </header>
+
+      <ShareBar details={details} />
 
       {/* —— Key facts —— */}
       <dl className={styles.facts}>
@@ -269,13 +283,20 @@ export default function KundliDashboard({ details }: { details: BirthDetails }) 
       </details>
 
       <div className={styles.footerBlock}>
-        <div className={styles.actions}>
-          <Link to="/begin" className="btn btn-ghost">{t('kundli.edit')}</Link>
-          <button type="button" className="btn-text" onClick={() => { forget(); navigate('/begin') }}>
-            {t('kundli.forget')}
-          </button>
+        <div className={`${styles.actions} no-print`}>
+          {mode === 'own' ? (
+            <>
+              <Link to="/begin" className="btn btn-ghost">{t('kundli.edit')}</Link>
+              <button type="button" className="btn-text" onClick={() => { forget(); navigate('/begin') }}>
+                {t('kundli.forget')}
+              </button>
+            </>
+          ) : (
+            <Link to="/begin" className="btn">{t('share.makeMine')}</Link>
+          )}
         </div>
         <p className={styles.small}>{t('disclaimer.full')}</p>
+        <p className="print-only">{t('print.generated', { date: new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(now) })}</p>
       </div>
     </div>
   )

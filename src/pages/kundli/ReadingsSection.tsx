@@ -119,7 +119,7 @@ export function ReadingsSection({ chart, names, now }: Props) {
         </article>
       </div>
 
-      <aside className={styles.cta}>
+      <aside className={`${styles.cta} no-print`}>
         <div>
           <h3>{t('read.matchCta')}</h3>
           <p className="muted">{t('read.matchCtaBody')}</p>

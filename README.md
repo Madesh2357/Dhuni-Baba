@@ -17,7 +17,7 @@ Marathi, Punjabi and French.
 | 1 | Design system, landing page, birth-details form, navigation, 11 languages | ✅ Done |
 | 2 | Real planetary calculations + Kundli dashboard | ✅ Done |
 | 3 | Chart-grounded readings, Guna Milan compatibility, Mangal Dosha, marriage timing | ✅ Done |
-| 4 | Shareable report, PDF, more tests, deployment | Next |
+| 4 | Shareable report links, Save as PDF, end-to-end & accessibility tests, deployment | ✅ Done |
 
 The Kundli dashboard shows the Lagna, Moon sign, nakshatra, a North or South
 Indian chart, a table of all nine grahas (with retrograde flags and houses)
@@ -62,6 +62,7 @@ Other commands:
 | `npm run build` | Produces the final website in `dist/` |
 | `npm run preview` | Serves the built `dist/` locally to try it |
 | `npm run check` | All of the above in one go — run before every commit |
+| `npm run test:e2e` | Builds the site and clicks through it in a real browser (phone + desktop), with an accessibility audit. First run `npx playwright install chromium` once |
 
 ## Where things live
 
@@ -121,6 +122,15 @@ chart, IANA time zones. The full, plain-language list (with what is active vs.
 planned) is on the site's **Method** page and in
 [`src/astrology/conventions.ts`](src/astrology/conventions.ts).
 
+## Sharing and PDF
+
+- **Share this reading** creates a link like `/share#v1.…`. The birth details
+  are packed into the part after `#`, which browsers never send to servers —
+  so sharing works without storing anything. Anyone with the link can read the
+  details, and the page says so.
+- **Save as PDF / Print** opens the browser's print dialog; choose *Save as
+  PDF*. A dedicated print stylesheet gives a clean, light, button-free report.
+
 ## Privacy
 
 No accounts, no database, no analytics, no cookies. Birth details live only in
@@ -136,7 +146,7 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — Cloudflare Pages
 ## Credits & licences
 
 Place data © GeoNames (CC BY 4.0) via Open-Meteo. Fonts under SIL OFL 1.1.
-All libraries are MIT / Apache-2.0 — see [docs/LICENSES.md](docs/LICENSES.md).
+Shipped libraries are MIT; dev tools are MIT / Apache-2.0 / MPL-2.0 — see [docs/LICENSES.md](docs/LICENSES.md).
 The Dhuni Baba illustration is original SVG artwork made for this project.
 Translations are machine-assisted and should be reviewed by native speakers.
 

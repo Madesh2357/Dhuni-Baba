@@ -7,6 +7,7 @@ import { KundliPage } from './pages/KundliPage'
 import { MethodPage } from './pages/MethodPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PrivacyPage } from './pages/PrivacyPage'
+import { SharedPage } from './pages/SharedPage'
 
 // Loaded on demand: it carries the astronomy engine.
 const MatchPage = lazy(() => import('./pages/MatchPage'))
@@ -27,6 +28,7 @@ export function App() {
             </Suspense>
           }
         />
+        <Route path="share" element={<SharedPage />} />
         <Route path="method" element={<MethodPage />} />
         <Route path="privacy" element={<PrivacyPage />} />
         <Route path="*" element={<NotFoundPage />} />

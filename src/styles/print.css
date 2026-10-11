@@ -1,0 +1,43 @@
+/*
+ * Print / "Save as PDF" styles: a clean light page, no navigation or buttons.
+ * Colours are swapped through the same design tokens, so charts and text
+ * follow automatically.
+ */
+.print-only { display: none; }
+
+@media print {
+  :root {
+    --color-midnight: #ffffff;
+    --color-indigo: #f6f2e8;
+    --color-indigo-deep: #faf7f0;
+    --color-ivory: #1b1b1b;
+    --color-muted: #4a4a4a;
+    --color-gold: #7a5c18;
+    --color-gold-soft: rgba(122, 92, 24, 0.45);
+    --color-gold-faint: rgba(122, 92, 24, 0.08);
+    --color-error: #9b2c12;
+  }
+  @page { margin: 14mm; }
+  html { color-scheme: light; background: #fff; }
+  body { background: #fff; font-size: 11pt; }
+  header[class*='header'] { background: transparent; border-bottom-color: var(--color-gold-soft); }
+  body::before { display: none; }
+
+  header[class*='header'] nav,
+  header[class*='header'] button,
+  header[class*='header'] [class*='panel'],
+  footer nav,
+  .no-print,
+  [class*='toggle'],
+  a[href='#main'] { display: none !important; }
+
+  .print-only { display: block; margin-top: 1rem; font-size: 9pt; color: var(--color-muted); }
+
+  main, .container { max-width: none; padding: 0; }
+  article, figure, [class*='chartFrame'], tr, li { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+  details { display: block; }
+  details > :not(summary) { display: block !important; }
+  details summary { list-style: none; }
+}
