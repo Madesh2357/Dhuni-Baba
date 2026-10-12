@@ -1,0 +1,13 @@
+// Cloudflare Workers configuration (used by Workers Builds and `npx wrangler deploy`).
+// The site is purely static: Cloudflare serves the built files from ./dist.
+{
+  "name": "dhuni-baba",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths such as /kundli, /match or /share#… get index.html,
+    // and React Router shows the right page. Without this, refreshing
+    // those pages would return a 404.
+    "not_found_handling": "single-page-application"
+  }
+}

@@ -49,6 +49,18 @@ test('Guna Milan compatibility', async ({ page }) => {
   await expect(page.getByText('Graha Maitri')).toBeVisible()
 })
 
+test('Love & Marriage report from the Kundli', async ({ page }) => {
+  await enterMyDetails(page)
+  await page.getByRole('link', { name: 'Open my Love & Marriage report' }).click()
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Zero')
+  await expect(page.getByText('/100')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Love marriage or arranged?' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Shaadi alert' })).toBeVisible()
+  // No horizontal scroll on phones.
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
+  expect(overflow).toBeLessThanOrEqual(0)
+})
+
 test('switching language translates the site', async ({ page, isMobile }) => {
   await page.goto('/')
   if (isMobile) await page.getByRole('button', { name: 'Menu' }).click()
