@@ -9,7 +9,7 @@ Browser
  ├─ i18n         src/i18n                      11 languages, lazy-loaded
  ├─ Data         src/data                      validation, time zones, geocoding, session store
  ├─ Astrology    src/astrology                 Astronomy Engine + Lahiri + dashas (lazy-loaded)
- └─ Readings     src/interpretation            readings, Guna Milan, Mangal Dosha
+ └─ Readings     src/interpretation            readings, Love & Marriage, Guna Milan, Mangal Dosha
         │
         └── HTTPS ──► Open-Meteo Geocoding API (place name only, no key)
 ```
@@ -57,6 +57,13 @@ Browser
 - **Stage 3 (done)** — chart-grounded funny readings (Lagna, Venus, 7th house), Mangal Dosha,
   marriage-timing windows from the dashas, and a Guna Milan page (`/match`). The logic in
   `src/interpretation/` returns *which* reading applies and *why*; the UI only translates it.
+- **Love & Marriage (`/love`)** — `src/interpretation/love.ts` builds the report from real chart
+  factors: a deliberately made-up *Romance Index* (starts at 50; Venus dignity and house, planets in
+  the 7th, Mangal Dosha, Moon–Venus; every point is listed on the page), love language from the
+  element of Venus' sign, a red flag from Mars' sign, fights from the Mars–Venus distance, love vs
+  arranged from the 5th and 7th lords (or Venus with Rahu), wedding vibe from the 7th lord's element,
+  in-laws from the 10th house, and the first dasha marriage window. Without a birth time the
+  house-based parts say so instead of guessing. The page is lazy-loaded (`src/pages/love/`).
 - **Stage 4 (done)** — share links with details in the URL fragment (`src/data/shareLink.ts`,
   validated like form input on the way back in), `/share` page, print stylesheet for Save as PDF
   (`src/styles/print.css`), Playwright end-to-end + axe accessibility tests (`e2e/`), CI for both,

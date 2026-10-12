@@ -67,10 +67,11 @@
 }
 .cta h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
 .cta p { margin: 0; font-size: var(--text-sm); }
+.ctaButtons { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 
 @media (min-width: 48em) {
   .cta { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-6); }
-  .cta .btn, .cta a { flex-shrink: 0; }
+  .cta .btn, .cta a, .ctaButtons { flex-shrink: 0; }
 }
 
 .disclaimer { margin-top: var(--space-5); font-size: var(--text-sm); color: var(--color-muted); max-width: 42rem; }

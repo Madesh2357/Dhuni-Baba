@@ -78,9 +78,14 @@ export function HomePage() {
             <p className="eyebrow">{t('home.heartEyebrow')}</p>
             <h2>{t('home.heartTitle')}</h2>
             <p className="lead">{t('home.heartLead')}</p>
-            <Link to="/match" className="btn btn-ghost">
-              {t('nav.match')}
-            </Link>
+            <div className={styles.heartActions}>
+              <Link to="/love" className="btn">
+                {t('nav.love')}
+              </Link>
+              <Link to="/match" className="btn btn-ghost">
+                {t('nav.match')}
+              </Link>
+            </div>
             <ChartIllustration className={styles.heartChart} />
           </div>
           <dl className={styles.heartList}>

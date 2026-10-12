@@ -26,6 +26,14 @@ test('Kundli dashboard', async ({ page }) => {
   await audit(page)
 })
 
+test('Love & Marriage report', async ({ page }) => {
+  await mockGeocoder(page)
+  await enterMyDetails(page)
+  await page.goto('/love')
+  await page.getByText('/100').waitFor()
+  await audit(page)
+})
+
 test('method and privacy pages', async ({ page }) => {
   await page.goto('/method')
   await audit(page)

@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import { BirthDetailsPage } from './pages/BirthDetailsPage'
 import { HomePage } from './pages/HomePage'
 import { KundliPage } from './pages/KundliPage'
+import { LovePage } from './pages/LovePage'
 import { MethodPage } from './pages/MethodPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { PrivacyPage } from './pages/PrivacyPage'
@@ -20,6 +21,7 @@ export function App() {
         <Route index element={<HomePage />} />
         <Route path="begin" element={<BirthDetailsPage />} />
         <Route path="kundli" element={<KundliPage />} />
+        <Route path="love" element={<LovePage />} />
         <Route
           path="match"
           element={

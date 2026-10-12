@@ -18,6 +18,7 @@ Marathi, Punjabi and French.
 | 2 | Real planetary calculations + Kundli dashboard | ✅ Done |
 | 3 | Chart-grounded readings, Guna Milan compatibility, Mangal Dosha, marriage timing | ✅ Done |
 | 4 | Shareable report links, Save as PDF, end-to-end & accessibility tests, deployment | ✅ Done |
+| + | Love & Marriage report (`/love`): Romance Index, love language, red flag, fight forecast, love vs arranged, wedding vibe, in-laws, Shaadi alert | ✅ Done |
 
 The Kundli dashboard shows the Lagna, Moon sign, nakshatra, a North or South
 Indian chart, a table of all nine grahas (with retrograde flags and houses)
@@ -76,7 +77,7 @@ src/
   i18n/locales/*.ts     the text in every language (en.ts is the master list)
   data/                 validation, time-zone conversion, place search, session storage
   astrology/            calculations: engine.ts, ayanamsha.ts, chart.ts, dasha.ts (+ tests)
-  interpretation/       readings, Guna Milan and Mangal Dosha (pure functions + tests)
+  interpretation/       readings, Love & Marriage report, Guna Milan and Mangal Dosha (pure functions + tests)
 docs/                   architecture, licences, deployment
 ```
 

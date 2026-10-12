@@ -160,3 +160,5 @@
   text-align: center;
 }
 .final h2 { margin-bottom: var(--space-6); }
+
+.heartActions { display: flex; flex-wrap: wrap; gap: var(--space-3); }

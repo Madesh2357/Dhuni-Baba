@@ -124,9 +124,14 @@ export function ReadingsSection({ chart, names, now }: Props) {
           <h3>{t('read.matchCta')}</h3>
           <p className="muted">{t('read.matchCtaBody')}</p>
         </div>
-        <Link to="/match" className="btn">
-          {t('nav.match')}
-        </Link>
+        <div className={styles.ctaButtons}>
+          <Link to="/love" className="btn">
+            {t('love.cta')}
+          </Link>
+          <Link to="/match" className="btn btn-ghost">
+            {t('nav.match')}
+          </Link>
+        </div>
       </aside>
 
       <p className={styles.disclaimer}>{t('read.disclaimer')}</p>
